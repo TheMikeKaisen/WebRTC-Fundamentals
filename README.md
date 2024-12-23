@@ -6,7 +6,7 @@
 - [TURN Server](#turn-server)
 - [ICE Candidates](#ice-candidates)
 - [Session Description Protocol](#session-description-protocol)
-- [RTCPeerConnection](#rtcp-eerconnection)
+- [RTCPeerConnection](#rtcpeerconnection)
 - [SFU (Selective Forwarding Unit) Architecture in WebRTC](#sfu-selective-forwarding-unit-architecture-in-webrtc)
 - [Why SFU](#why-sfu)
 - [Other Architectures](#other-architectures)
@@ -80,6 +80,33 @@ The process of the first browser (the one initiating connection) sending their `
 ### **Answer**
 
 The other side returning their `ice candidates` is called the answer.
+
+# Ice Candidates
+
+ICE (Interactive Connectivity Establishment) candidates are **potential network connection endpoints** that allow two peers (devices) to connect directly in a WebRTC session. Essentially, they describe the ways a peer can be reached over a network.
+
+### Types of ICE Candidates:
+
+1. **Host Candidate**:
+    - Represents the peer's local IP address.
+    - Example: Connecting directly within the same network.
+2. **Server-Reflexive Candidate**:
+    - Generated using a STUN (Session Traversal Utilities for NAT) server.
+    - Represents the public IP and port of a peer when behind a NAT (Network Address Translation).
+3. **Relay Candidate**:
+    - Generated using a TURN (Traversal Using Relays around NAT) server.
+    - Represents a connection relayed through a server if direct communication isn’t possible (e.g., due to strict firewalls).
+
+### How It Works:
+
+1. Each peer gathers multiple ICE candidates (host, server-reflexive, relay).
+2. The candidates are exchanged with the other peer during the **signaling** process.
+3. Both peers test the candidates to determine the best path (called **ICE connectivity checks**).
+4. Once the best candidate pair is found, the WebRTC connection is established.
+
+### Analogy:
+
+Think of ICE candidates as different "routes" to deliver a package. Some routes are direct (local network), others go through intermediate stops (STUN/TURN servers), and the best one is chosen based on availability and performance.
 
 # Session Desciption protocol
 
