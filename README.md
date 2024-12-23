@@ -108,7 +108,7 @@ ICE (Interactive Connectivity Establishment) candidates are **potential network 
 
 Think of ICE candidates as different "routes" to deliver a package. Some routes are direct (local network), others go through intermediate stops (STUN/TURN servers), and the best one is chosen based on availability and performance.
 
-# Session Desciption protocol
+# Session Description protocol
 
 SDP (Session Description Protocol) is like a **"handshake document"** in WebRTC. It’s a text-based format that describes the **connection setup details** for audio, video, and other data streams between two peers.
 
